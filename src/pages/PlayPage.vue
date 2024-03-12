@@ -9,6 +9,8 @@ import * as core from '@/objects/minesweepCore.js'
 
 import {FPSController} from "@/objects/control.js";
 
+import * as global from '@/objects/global.js'
+
 import {EffectComposer, FXAAShader, OutlinePass, OutputPass, RenderPass, ShaderPass} from "three/addons";
 
 const statusStr = ref("进行中...")
@@ -21,7 +23,7 @@ const scene = new three.Scene()
 const camera = new three.PerspectiveCamera(45, 1024/768)
 
 const loader = new three.CubeTextureLoader()
-loader.setPath('/assets/Bridge2/')
+loader.setPath(global.basePath + '/assets/Bridge2/')
 const textureCube = loader.load( [ 'posx.jpg', 'negx.jpg', 'posy.jpg', 'negy.jpg', 'posz.jpg', 'negz.jpg' ] );
 scene.background = textureCube
 
@@ -207,7 +209,7 @@ animate()
 </script>
 
 <template>
-    <h2 :class="{gameStatusPlaying: gameStatus===1, gameStatusLose: gameStatus===2, gameStatusWin: gameStatus===3,}">
+    <h2 :class="{gameStatusPlaying: gameStatus===1, gameStatusLose: gameStatus===2, gameStatusWin: gameStatus===3, title: true}">
         {{ statusStr }}
     </h2>
     <p>
@@ -216,11 +218,17 @@ animate()
     <div ref="canvas" class="canvas">
         <div class="aimer"></div>
     </div>
-    <p>点击画面进入游戏，WASD 在水平面上移动，空格上升，LShift下降。左键打开格子，右键标记/取消标记。</p>
-    <a href="https://github.com/hugeBlack/threejsMinesweeper">Github</a>
+    <p>点击画面进入游戏，WASD 在水平面上移动，空格上升，LShift下降。左键打开格子，右键标记/取消标记。
+        <a href="https://github.com/hugeBlack/threejsMinesweeper">Github</a>
+    </p>
+
 </template>
 
 <style scoped>
+.title{
+    margin: 10px;
+}
+
 .aimer {
     position: absolute;
     top: 50%;

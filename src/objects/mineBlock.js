@@ -3,16 +3,21 @@ import * as raycastHelper from '@/objects/raycastHelper.js'
 import {GLTFLoader} from "three/addons";
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import * as mixerHelper from "@/objects/mixerHelper.js"
-
+import * as global from '@/objects/global.js'
 
 const gltfLoader = new GLTFLoader();
 const fontLoader = new FontLoader()
 const textureLoader = new three.TextureLoader()
+textureLoader.setPath(global.basePath)
+gltfLoader.setPath(global.basePath)
+fontLoader.setPath(global.basePath)
+
 /**
  * @type three.BufferGeometry
  */
 let blockGeometry = undefined
 let numberFont = undefined
+
 const flagTexture = textureLoader.load("/assets/flag.png")
 const flagMaterial = new three.MeshLambertMaterial({map: flagTexture, transparent: true})
 const mouseHoverKeyFrame = new three.KeyframeTrack(".position", [0, 0.25], [0,0,0,0,-0.2,0])
@@ -61,7 +66,6 @@ const flagGeometry = (()=>{
 
 
 const tntMaterials = (() => {
-    let textureLoader = new three.TextureLoader()
     let topImg = textureLoader.load("/assets/tnt_top.png")
     let bottomImg = textureLoader.load("/assets/tnt_bottom.png")
     let sideImg = textureLoader.load("/assets/tnt_side.png")

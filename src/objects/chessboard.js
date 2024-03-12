@@ -1,4 +1,5 @@
 import * as three from 'three/src/Three.js'
+import * as global from '@/objects/global.js'
 
 const tileWidth = 1.0;
 const borderWidth = 0.5;
@@ -9,6 +10,7 @@ const height = 2;
 
 // 参数结束
 const loader = new three.TextureLoader();
+loader.setPath(global.basePath)
 let innerHeight = height - depth;
 
 

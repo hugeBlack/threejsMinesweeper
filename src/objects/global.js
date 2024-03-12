@@ -1,5 +1,5 @@
 let canUserClick = false
-
+const basePath = "/minesweeperDemo/"
 const setCanUserClick = (b) => {
     canUserClick = b
 }
@@ -10,5 +10,6 @@ const getCanUserClick = () => {
 
 export {
     setCanUserClick,
-    getCanUserClick
+    getCanUserClick,
+    basePath
 }
