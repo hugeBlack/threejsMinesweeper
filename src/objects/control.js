@@ -62,10 +62,12 @@ export class FPSController {
                     break;
 
                 case 'Space':
+                    event.preventDefault()
                     this.moveUp = true;
                     break;
 
                 case 'ShiftLeft':
+                    event.preventDefault()
                     this.moveDown = true;
                     break;
 

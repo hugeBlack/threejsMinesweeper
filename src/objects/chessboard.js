@@ -1,5 +1,6 @@
 import * as three from 'three/src/Three.js'
 import * as global from '@/objects/global.js'
+import * as raycaster from '@/objects/raycastHelper.js'
 
 const tileWidth = 1.0;
 const borderWidth = 0.5;
@@ -171,6 +172,7 @@ const generateChessBoard = (tileCount) => {
 
     ans.add(boxMesh)
     ans.add(surfaceMesh)
+    raycaster.registerRaycastObj(boxMesh, null)
     return ans;
 }
 
